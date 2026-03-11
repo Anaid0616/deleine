@@ -31,7 +31,7 @@ export default async function Home() {
             loop
             playsInline
             preload="none"
-            className="w-full h-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
           >
             <source src={hero.videoUrl} type="video/mp4" />
           </video>
@@ -39,7 +39,10 @@ export default async function Home() {
           <Image
             src={hero.imageUrl}
             alt="Deleine hero image/video"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
           />
         ) : null}
 
@@ -55,6 +58,7 @@ export default async function Home() {
     inline-block px-8 py-3
     border-2 border-white text-white text-5xl
     tracking-wide
+    drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
     transition-all duration-300 ease-in-out
     hover:text-[var(--color-accent)]
     hover:border-[var(--color-accent)]
