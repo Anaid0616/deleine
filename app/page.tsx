@@ -30,7 +30,8 @@ export default async function Home() {
             muted
             loop
             playsInline
-            preload="none"
+            preload="metadata"
+            aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover"
           >
             <source src={hero.videoUrl} type="video/mp4" />
@@ -52,7 +53,8 @@ export default async function Home() {
             <a
               href={hero.ctaUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              aria-label="Boka tid hos Deleine"
               className={`
     ${ebGaramond.className}
     inline-block px-8 py-3
@@ -95,7 +97,7 @@ export default async function Home() {
                 {intro?.imageUrl && (
                   <Image
                     src={intro.imageUrl}
-                    alt="Deleine intro image"
+                    alt="Frisörstyling hos Deleine salong"
                     fill
                     className="object-cover"
                     sizes="(min-width: 768px) 40vw, 80vw"
