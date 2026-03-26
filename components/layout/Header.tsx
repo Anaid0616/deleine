@@ -17,6 +17,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  const isHome = pathname === '/';
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
@@ -44,15 +46,19 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-        scrolled
-          ? 'bg-[var(--color-surface)] text-[var(--color-text-main)]'
-          : 'bg-transparent text-white'
+      className={`top-0 left-0 w-full z-50 transition-colors duration-300 ${
+        isHome
+          ? `fixed ${
+              scrolled
+                ? 'bg-[var(--color-surface)] text-[var(--color-text-main)]'
+                : 'bg-transparent text-white'
+            }`
+          : 'sticky bg-[var(--color-surface)] text-[var(--color-text-main)]'
       }`}
     >
       <div
         className={`w-full max-w-[1400px] mx-auto px-6 flex items-center justify-between transition-all duration-300 ${
-          scrolled ? 'py-3' : 'py-4'
+          isHome ? (scrolled ? 'py-3' : 'py-4') : 'py-3'
         }`}
       >
         {/* Logo */}
@@ -60,10 +66,10 @@ export default function Header() {
           <Image
             src="/deleine-logo.png"
             alt="Deleine logo"
-            width={300}
-            height={40}
+            width={521}
+            height={153}
             className={`h-auto transition-all duration-300 ${
-              scrolled
+              !isHome || scrolled
                 ? 'w-[250px]'
                 : 'w-[300px] invert drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]'
             }`}
@@ -74,7 +80,7 @@ export default function Header() {
         {/* Desktop navigation */}
         <nav
           className={`${redHat.className} ml-auto flex items-center gap-10 text-xl font-medium ${
-            scrolled
+            !isHome || scrolled
               ? 'text-[var(--color-text-main)]'
               : 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]'
           }`}

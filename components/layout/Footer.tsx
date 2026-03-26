@@ -10,20 +10,20 @@ export default function Footer() {
         <div>
           <Image
             src="/footer-logo.png"
-            alt="Deleine logo"
-            width={90}
-            height={130}
-            className="h-auto mb-4"
+            alt="Deleine footer logo"
+            width={95}
+            height={115}
+            className="w-[90px] h-auto -mt-1 mb-4"
           />
 
           <p className="max-w-[250px]">
-            Professionell hårvård, med lugn och gemenskap i fokus.
+            Klippning, färg och styling – alltid anpassat efter dig
           </p>
         </div>
 
         {/* Navigation */}
         <div className={redHat.className}>
-          <h3 className="text-base font-semibold mb-4">Navigation</h3>
+          <p className="mb-4 text-lg font-semibold">Navigation</p>
 
           <ul className="space-y-2">
             <li>
@@ -51,7 +51,7 @@ export default function Footer() {
 
         {/* Kontakt */}
         <div>
-          <h3 className="text-base font-semibold mb-4">Kontakt</h3>
+          <p className="mb-4 text-lg font-semibold">Kontakt</p>
 
           <ul className="space-y-2">
             <li>Telefon: 0722 50 74 74</li>
