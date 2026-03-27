@@ -58,7 +58,7 @@ export default async function About() {
               <div className="relative aspect-square w-full overflow-hidden bg-neutral-100">
                 <Image
                   src={section.imageUrl}
-                  alt={section.name}
+                  alt=""
                   fill
                   className="object-cover"
                   sizes="(min-width: 768px) 50vw, 100vw"
