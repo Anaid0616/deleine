@@ -2,30 +2,25 @@ import Image from 'next/image';
 import { sanityClient } from '@/lib/sanity';
 import { ebGaramond } from '@/lib/fonts';
 
-const heroQuery = `*[_type == "hero"][0]{
+const homeQuery = `*[_type == "homePage"][0]{
+  subtitle,
   ctaText,
   ctaUrl,
-  subtitle,
+  heading,
+  body,
   "imageUrl": image.asset->url,
   "videoUrl": backgroundVideo.asset->url
 }`;
 
-const introQuery = `*[_type == "homeIntro"][0]{
-  heading,
-  body,
-  "imageUrl": image.asset->url
-}`;
-
 export default async function Home() {
-  const hero = await sanityClient.fetch(heroQuery);
-  const intro = await sanityClient.fetch(introQuery);
+  const home = await sanityClient.fetch(homeQuery);
 
   return (
     <main>
       {/* HERO */}
       <section className="relative h-screen overflow-hidden">
         {/* Video or fallback-img */}
-        {hero?.videoUrl ? (
+        {home?.videoUrl ? (
           <video
             autoPlay
             muted
@@ -35,11 +30,11 @@ export default async function Home() {
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover"
           >
-            <source src={hero.videoUrl} type="video/mp4" />
+            <source src={home.videoUrl} type="video/mp4" />
           </video>
-        ) : hero?.imageUrl ? (
+        ) : home?.imageUrl ? (
           <Image
-            src={hero.imageUrl}
+            src={home.imageUrl}
             alt="Deleine hero image/video"
             fill
             priority
@@ -52,15 +47,15 @@ export default async function Home() {
 
         {/* Text + center */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          {hero?.subtitle && (
+          {home?.subtitle && (
             <p className="mb-6 max-w-3xl text-white text-xl md:text-3xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-              {hero.subtitle}
+              {home.subtitle}
             </p>
           )}
 
-          {hero?.ctaUrl && (
+          {home?.ctaUrl && (
             <a
-              href={hero.ctaUrl}
+              href={home.ctaUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Boka tid hos Deleine"
@@ -75,7 +70,7 @@ export default async function Home() {
     hover:border-[var(--color-accent)]
   `}
             >
-              {hero?.ctaText}
+              {home?.ctaText}
             </a>
           )}
         </div>
@@ -89,13 +84,13 @@ export default async function Home() {
             <h2
               className={`${ebGaramond.className} text-4xl md:text-5xl mb-8 text-[var(--color-accent)]`}
             >
-              {intro?.heading}
+              {home?.heading}
             </h2>
 
             <p
               className={`${ebGaramond.className} text-3xl md:text-4xl mb-6 text-[var(--color-accent)]`}
             >
-              {intro?.body}
+              {home?.body}
             </p>
           </div>
 
@@ -103,9 +98,9 @@ export default async function Home() {
           <div className="flex justify-center md:justify-end">
             <div className="bg-[var(--color-button-soft)] p-6 md:p-8 w-full max-w-[550px]">
               <div className="relative w-full aspect-[4/5]">
-                {intro?.imageUrl && (
+                {home?.imageUrl && (
                   <Image
-                    src={intro.imageUrl}
+                    src={home.imageUrl}
                     alt="Frisörstyling hos Deleine salong"
                     fill
                     className="object-cover"
