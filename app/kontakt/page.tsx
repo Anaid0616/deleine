@@ -1,7 +1,7 @@
 import { sanityClient } from '@/lib/sanity';
 import { ebGaramond } from '@/lib/fonts';
-import Button from '@/components/Button';
 import { FaInstagram, FaFacebookF } from 'react-icons/fa';
+import ContactForm from '@/components/ContactForm';
 
 const contactQuery = `*[_type == "contactPage"][0]{
   title,
@@ -102,57 +102,7 @@ export default async function ContactPage() {
 
           {/* Right contact form */}
           <div>
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-1 block text-sm uppercase tracking-wide text-neutral-500"
-                >
-                  Namn
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  className="w-full border-b border-black/30 bg-transparent py-2 outline-none transition-all duration-200 hover:border-black/60 focus:border-[var(--color-accent)] resize-none"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-1 block text-sm uppercase tracking-wide text-neutral-500"
-                >
-                  Email*
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="w-full border-b border-black/30 bg-transparent py-2 outline-none transition-all duration-200 hover:border-black/60 focus:border-[var(--color-accent)] resize-none"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="mb-1 block text-sm uppercase tracking-wide text-neutral-500"
-                >
-                  Meddelande
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  className="w-full border-b border-black/30 bg-transparent py-2 outline-none transition-all duration-200 hover:border-black/60 focus:border-[var(--color-accent)] resize-none"
-                />
-              </div>
-
-              <div className="flex justify-end">
-                <Button type="submit">Skicka</Button>
-              </div>
-            </form>
+            <ContactForm />
           </div>
         </div>
 
