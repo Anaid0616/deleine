@@ -4,9 +4,9 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 export const metadata = {
-  title: 'Deleine Frisörsalong',
+  title: 'Deleine - Frisör i Solna',
   description:
-    'Boka tid hos Deleine frisörsalong. Professionell hårstyling och behandlingar.',
+    'Exklusiv hårvård i en lugn salong i Solna. Klippning, färgning och hårförlängning anpassat efter dig. Boka din tid hos Deleine."',
 };
 
 export default function RootLayout({

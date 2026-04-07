@@ -42,13 +42,13 @@ export default async function About() {
   const about = await sanityClient.fetch<AboutPageData>(aboutQuery);
 
   return (
-    <main className="px-6 py-16 md:py-20">
+    <main className="px-6 py-10 md:py-16">
       <div className="mx-auto max-w-[1200px] text-center">
         <h1 className={`${ebGaramond.className} mb-4 text-4xl md:text-5xl`}>
           {about?.title}
         </h1>
 
-        <p className="mb-14 text-xl font-semibold">{about?.subtitle}</p>
+        <p className="mb-10 text-xl font-semibold">{about?.subtitle}</p>
 
         <div>
           {about?.sections?.map((section, index) => {
