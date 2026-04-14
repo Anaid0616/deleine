@@ -29,7 +29,7 @@ export default async function ServicesPage() {
     await sanityClient.fetch<ServicesPageData>(servicesQuery);
 
   return (
-    <main className="px-6 py-10 md:py-15">
+    <main className="px-6 py-10 md:py-16">
       <div className="mx-auto max-w-[800px]">
         <h1
           className={`${ebGaramond.className} mb-10 text-center text-4xl md:text-5xl`}

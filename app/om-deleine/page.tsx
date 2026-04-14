@@ -74,7 +74,7 @@ export default async function About() {
                   {section.name}
                 </h2>
 
-                <p className="mb-5 text-xl font-semibold">{section.role}</p>
+                <p className="mb-5 text-lg font-semibold">{section.role}</p>
 
                 {section.body && (
                   <p className="mb-6 max-w-[42ch] leading-7 text-neutral-700">

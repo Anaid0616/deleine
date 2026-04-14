@@ -3,32 +3,19 @@
 import { useState } from 'react';
 import Button from '@/components/Button';
 
-/**
- * ContactForm component
- *
- * Handles user input, sends form data to the API route,
- * and displays success/error feedback to the user.
- */
 export default function ContactForm() {
-  // Stores status message shown to the user (loading, success, error)
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState<'success' | 'error' | ''>('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  /**
-   * Handles form submission
-   *
-   * Prevents default form behavior, collects input values,
-   * sends them to the backend API, and updates UI based on response.
-   */
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    // Reference to the form element (used for reset later)
     const form = event.currentTarget;
+    setLoading(true);
+    setStatus('');
+    setMessage('');
 
-    // Show loading state
-    setStatus('Skickar...');
-
-    // Collect form data
     const formData = new FormData(form);
 
     const data = {
@@ -37,31 +24,40 @@ export default function ContactForm() {
       message: formData.get('message'),
     };
 
-    // Send POST request to API route
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    // Parse response from API
-    const result = await response.json();
+      const result = await response.json();
 
-    // Handle success
-    if (response.ok) {
-      setStatus('Meddelandet skickades.');
-      form.reset(); // Clear form fields
-    } else {
-      // Handle error
-      setStatus(result.error || 'Något gick fel.');
+      if (response.ok) {
+        setStatus('success');
+        setMessage('Meddelandet skickades');
+        form.reset();
+      } else {
+        setStatus('error');
+        setMessage(result.error || 'Kunde inte skicka meddelandet');
+      }
+    } catch {
+      setStatus('error');
+      setMessage('Kunde inte skicka meddelandet');
+    } finally {
+      setLoading(false);
+
+      setTimeout(() => {
+        setStatus('');
+        setMessage('');
+      }, 3000);
     }
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Name field */}
       <div>
         <label
           htmlFor="name"
@@ -77,7 +73,6 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* Email field */}
       <div>
         <label
           htmlFor="email"
@@ -94,7 +89,6 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* Message field */}
       <div>
         <label
           htmlFor="message"
@@ -110,13 +104,23 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* Submit button */}
-      <div className="flex justify-end">
-        <Button type="submit">Skicka</Button>
-      </div>
+      <div className="flex items-center justify-end gap-4">
+        {status && (
+          <p
+            className={`
+        text-sm transition-all duration-300 ease-out
+        ${status === 'success' ? 'text-[var(--color-accent)] opacity-100 translate-y-0' : ''}
+        ${status === 'error' ? 'text-[#9f4f3f] opacity-100 translate-y-0' : ''}
+      `}
+          >
+            {message}
+          </p>
+        )}
 
-      {/* Status message (success/error/loading) */}
-      {status && <p className="text-base">{status}</p>}
+        <Button type="submit" loading={loading}>
+          Skicka
+        </Button>
+      </div>
     </form>
   );
 }
