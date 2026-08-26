@@ -1,4 +1,3 @@
-import { poppins } from '@/lib/fonts';
 import { HiChevronRight } from 'react-icons/hi';
 
 type ButtonProps = {
@@ -28,6 +27,7 @@ function Spinner() {
         stroke="currentColor"
         strokeWidth="4"
       />
+
       <path
         className="opacity-100"
         fill="currentColor"
@@ -45,21 +45,16 @@ export default function Button({
   loading = false,
 }: ButtonProps) {
   const baseClasses = `
-    ${poppins.className}
-    group inline-flex items-center gap-1
-
-    border-2 border-[var(--color-accent)]
-    text-[var(--color-accent)]
-
-    px-6 py-3
-    font-semibold
-    min-w-[116px] justify-center
-
+    group inline-flex items-center justify-center gap-3
+    border-2 border-accent
+    text-accent
+    px-6 py-2
+    text-lg font-medium
+    min-w-[116px]
     transition-all duration-300 ease-in-out
-
-    hover:bg-[var(--color-accent)]
+    hover:bg-accent
     hover:text-white
- disabled:opacity-50 disabled:cursor-not-allowed
+    disabled:opacity-50 disabled:cursor-not-allowed
   `;
 
   // If it's a link, render an anchor tag
@@ -71,7 +66,8 @@ export default function Button({
         rel="noopener noreferrer"
         className={baseClasses}
       >
-        <span>{children}</span>
+        {children}
+
         {showIcon && !loading && (
           <HiChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
         )}
@@ -86,7 +82,8 @@ export default function Button({
         <Spinner />
       ) : (
         <>
-          <span>{children}</span>
+          {children}
+
           {showIcon && (
             <HiChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
           )}

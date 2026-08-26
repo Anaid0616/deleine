@@ -47,7 +47,7 @@ export default async function ServicesPage() {
           {servicesPage?.services?.map((service, index) => (
             <section key={index} className="border-t border-black/10 pt-10">
               <h2
-                className={`${ebGaramond.className} mb-2 text-3xl md:text-4xl`}
+                className={`${ebGaramond.className} mb-2 text-3xl md:text-4xl text-accent`}
               >
                 {service.title}
               </h2>

@@ -36,14 +36,14 @@ export default async function ContactPage() {
             {/* Left contact info */}
             <div className="space-y-6">
               <div>
-                <p className="mb-1 text-sm uppercase tracking-wide text-neutral-500">
+                <p className="mb-1 text-sm uppercase tracking-wide text-accent">
                   Adress
                 </p>
                 <p>{contact?.address}</p>
               </div>
 
               <div>
-                <p className="mb-1 text-sm uppercase tracking-wide text-neutral-500">
+                <p className="mb-1 text-sm uppercase tracking-wide text-accent">
                   Email
                 </p>
                 <a
@@ -55,7 +55,7 @@ export default async function ContactPage() {
               </div>
 
               <div>
-                <p className="mb-1 text-sm uppercase tracking-wide text-neutral-500">
+                <p className="mb-1 text-sm uppercase tracking-wide text-accent">
                   Telefon
                 </p>
                 <a
@@ -73,11 +73,11 @@ export default async function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-    text-black/70
+    text-accent
     transition-all duration-200
     transform
-    hover:scale-110
-    hover:text-[var(--color-accent)]
+    hover:scale-120
+    hover:text-black/70]
   "
                     aria-label="Instagram"
                   >
@@ -91,11 +91,11 @@ export default async function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-    text-black/70
+    text-accent
     transition-all duration-200
     transform
-    hover:scale-110
-    hover:text-[var(--color-accent)]
+    hover:scale-120
+    hover:text-black/70]
   "
                     aria-label="Facebook"
                   >

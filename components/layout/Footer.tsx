@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { redHat } from '@/lib/fonts';
-import { poppins } from '@/lib/fonts';
 
 export default function Footer() {
   return (
@@ -24,7 +23,7 @@ export default function Footer() {
 
         {/* Navigation */}
         <div className={redHat.className}>
-          <p className={poppins.className + ' mb-4 text-lg font-medium'}>
+          <p className={redHat.className + ' mb-4 text-xl font-medium'}>
             Navigation
           </p>
 
@@ -54,7 +53,7 @@ export default function Footer() {
 
         {/* Kontakt */}
         <div>
-          <p className={poppins.className + ' mb-4 text-lg font-medium'}>
+          <p className={redHat.className + ' mb-4 text-xl font-medium'}>
             Kontakt
           </p>
 

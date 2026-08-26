@@ -88,12 +88,12 @@ export default async function Home() {
           {/* Text left */}
           <div className="max-w-[450px] mx-auto lg:mx-0 text-center">
             <h2
-              className={`${ebGaramond.className} text-4xl md:text-5xl mb-8 text-[var(--color-accent)]`}
+              className={`${ebGaramond.className} text-4xl md:text-5xl mb-8 text-accent`}
             >
               {home?.heading}
             </h2>
             <div
-              className={`${ebGaramond.className} text-3xl md:text-4xl text-[var(--color-accent)]`}
+              className={`${ebGaramond.className} text-3xl md:text-4xl text-accent`}
             >
               {String(home?.body ?? '')
                 .split(/\n\s*\n/)
@@ -130,7 +130,7 @@ export default async function Home() {
         <section className="px-4 py-12 md:py-16">
           <div className="max-w-5xl mx-auto">
             <h3
-              className={`${ebGaramond.className} text-4xl md:text-5xl text-center mb-10 text-[var(--color-accent)]`}
+              className={`${ebGaramond.className} text-4xl md:text-5xl text-center mb-10 text-accent`}
             >
               Populära behandlingar
             </h3>
@@ -158,11 +158,9 @@ export default async function Home() {
                       </div>
                     )}
 
-                    <h3
-                      className={`${ebGaramond.className} mt-4 text-3xl text-[var(--color-accent)]`}
-                    >
+                    <h4 className={`${ebGaramond.className} mt-4 text-3xl`}>
                       {service.title}
-                    </h3>
+                    </h4>
                   </div>
                 ),
               )}

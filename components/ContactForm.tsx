@@ -61,7 +61,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="mb-1 block text-sm uppercase tracking-wide text-neutral-500"
+          className="mb-1 block text-sm uppercase tracking-wide text-accent"
         >
           Namn
         </label>
@@ -76,7 +76,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className="mb-1 block text-sm uppercase tracking-wide text-neutral-500"
+          className="mb-1 block text-sm uppercase tracking-wide text-accent"
         >
           Email
         </label>
@@ -92,7 +92,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="mb-1 block text-sm uppercase tracking-wide text-neutral-500"
+          className="mb-1 block text-sm uppercase tracking-wide text-accent"
         >
           Meddelande
         </label>

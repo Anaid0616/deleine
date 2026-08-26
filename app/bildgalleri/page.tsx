@@ -3,6 +3,7 @@ import { ebGaramond } from '@/lib/fonts';
 import { FiInstagram } from 'react-icons/fi';
 import { sanityClient } from '@/lib/sanity';
 import Pagination from '@/components/Pagination';
+import Button from '@/components/Button';
 
 const galleryQuery = `*[_type == "galleryPage"][0]{
   heading,
@@ -79,23 +80,10 @@ export default async function GalleryPage({
 
         {data?.instagramUrl && (
           <div className="mb-8 flex justify-end">
-            <a
-              href={data.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                inline-flex items-center gap-2
-                border-2 border-[var(--color-accent)]
-                px-5 py-2 font-medium
-                text-[var(--color-accent)]
-                transition
-                hover:bg-[var(--color-accent)]
-                hover:text-white
-              "
-            >
+            <Button href={data.instagramUrl}>
               <FiInstagram className="h-4 w-4" />
               Följ oss på Instagram
-            </a>
+            </Button>
           </div>
         )}
 

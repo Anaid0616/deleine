@@ -69,17 +69,15 @@ export default async function About() {
             const textBlock = (
               <div className="flex h-full flex-col items-center justify-center border border-neutral-300 bg-white px-6 py-8 text-center shadow-sm md:px-10 md:py-10">
                 <h2
-                  className={`${ebGaramond.className} mb-2 text-3xl md:text-4xl`}
+                  className={`${ebGaramond.className} mb-2 text-3xl md:text-4xl text-accent`}
                 >
                   {section.name}
                 </h2>
 
-                <p className="mb-5 text-lg font-semibold">{section.role}</p>
+                <p className="mb-5 text-lg font-medium">{section.role}</p>
 
                 {section.body && (
-                  <p className="mb-6 max-w-[42ch] leading-7 text-neutral-700">
-                    {section.body}
-                  </p>
+                  <p className="mb-6 max-w-[42ch] leading-7">{section.body}</p>
                 )}
 
                 {(section.phone || section.email) && (
