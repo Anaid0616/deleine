@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer';
 export const metadata = {
   title: 'Deleine - Frisör i Solna',
   description:
-    'Exklusiv hårvård i en lugn salong i Solna. Klippning, färgning och hårförlängning anpassat efter dig. Boka din tid hos Deleine."',
+    'Exklusiv hårvård i en lugn salong i Solna. Klippning, färgning och hårförlängning anpassat efter dig. Boka din tid hos Deleine.',
 };
 
 export default function RootLayout({
@@ -16,9 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv">
-      <body className={`${redHat.className} antialiased`}>
+      <body
+        className={`${redHat.className} min-h-screen flex flex-col antialiased`}
+      >
         <Header />
-        {children}
+
+        <div className="flex-1">{children}</div>
+
         <Footer />
       </body>
     </html>

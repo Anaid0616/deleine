@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { sanityClient } from '@/lib/sanity';
 import { ebGaramond } from '@/lib/fonts';
+import Button from '@/components/Button';
 
 const homeQuery = `*[_type == "homePage"][0]{
   subtitle,
@@ -9,7 +10,12 @@ const homeQuery = `*[_type == "homePage"][0]{
   heading,
   body,
   "imageUrl": image.asset->url,
-  "videoUrl": backgroundVideo.asset->url
+  "videoUrl": backgroundVideo.asset->url,
+  featuredServices[]{
+    title,
+    alt,
+    "imageUrl": image.asset->url
+  }
 }`;
 
 export default async function Home() {
@@ -78,7 +84,7 @@ export default async function Home() {
 
       {/* INTRO */}
       <section className="px-4 py-12 md:py-16">
-        <div className="max-w-[1200px] mx-auto grid gap-8 md:gap-10 md:grid-cols-2 md:items-center">
+        <div className="max-w-5xl mx-auto grid gap-8 md:gap-10 md:grid-cols-2 md:items-center">
           {/* Text left */}
           <div className="max-w-[450px] mx-auto lg:mx-0 text-center">
             <h2
@@ -86,12 +92,18 @@ export default async function Home() {
             >
               {home?.heading}
             </h2>
-
-            <p
-              className={`${ebGaramond.className} text-3xl md:text-4xl mb-6 text-[var(--color-accent)]`}
+            <div
+              className={`${ebGaramond.className} text-3xl md:text-4xl text-[var(--color-accent)]`}
             >
-              {home?.body}
-            </p>
+              {String(home?.body ?? '')
+                .split(/\n\s*\n/)
+                .filter(Boolean)
+                .map((paragraph, index) => (
+                  <p key={index} className="mb-6 last:mb-0">
+                    {paragraph}
+                  </p>
+                ))}
+            </div>
           </div>
 
           {/* Image right */}
@@ -112,6 +124,58 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* POPULAR SERVICES */}
+      {home?.featuredServices?.length > 0 && (
+        <section className="px-4 py-12 md:py-16">
+          <div className="max-w-5xl mx-auto">
+            <h3
+              className={`${ebGaramond.className} text-4xl md:text-5xl text-center mb-10 text-[var(--color-accent)]`}
+            >
+              Populära behandlingar
+            </h3>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {home.featuredServices.map(
+                (
+                  service: {
+                    title: string;
+                    alt?: string;
+                    imageUrl?: string;
+                  },
+                  index: number,
+                ) => (
+                  <div key={index} className="text-center">
+                    {service.imageUrl && (
+                      <div className="relative aspect-[4/5] w-full overflow-hidden">
+                        <Image
+                          src={service.imageUrl}
+                          alt={service.alt || service.title}
+                          fill
+                          className="object-cover transition-transform duration-500 hover:scale-105"
+                          sizes="(min-width: 768px) 33vw, 100vw"
+                        />
+                      </div>
+                    )}
+
+                    <h3
+                      className={`${ebGaramond.className} mt-4 text-3xl text-[var(--color-accent)]`}
+                    >
+                      {service.title}
+                    </h3>
+                  </div>
+                ),
+              )}
+            </div>
+
+            <div className="mt-10 text-center">
+              <Button href="/tjanster" showIcon>
+                Se alla behandlingar
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

@@ -5,8 +5,8 @@ import { poppins } from '@/lib/fonts';
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-surface)] text-[var(--color-text-main)] mt-20">
-      <div className="max-w-[1400px] mx-auto px-6 py-12 grid gap-10 md:grid-cols-3">
+    <footer className="bg-[var(--color-surface)] text-[var(--color-text-main)] mt-10">
+      <div className="max-w-[1400px] mx-auto px-6 py-8 grid gap-10 md:grid-cols-3">
         {/* Logo + text */}
         <div>
           <Image

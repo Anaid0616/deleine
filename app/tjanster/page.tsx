@@ -4,6 +4,7 @@ import Button from '@/components/Button';
 
 const servicesQuery = `*[_type == "servicesPage"][0]{
   title,
+  pageIntro,
   services[]{
     title,
     description,
@@ -20,6 +21,7 @@ type ServiceItem = {
 
 type ServicesPageData = {
   title: string;
+  pageIntro: string;
   bookingUrl?: string;
   services: ServiceItem[];
 };
@@ -32,10 +34,14 @@ export default async function ServicesPage() {
     <main className="px-6 py-10 md:py-16">
       <div className="mx-auto max-w-[800px]">
         <h1
-          className={`${ebGaramond.className} mb-10 text-center text-4xl md:text-5xl`}
+          className={`${ebGaramond.className} text-center text-4xl md:text-5xl`}
         >
           {servicesPage?.title}
         </h1>
+
+        <p className="mt-3 mb-12 text-center text-lg leading-8 text-neutral-600">
+          {servicesPage.pageIntro}
+        </p>
 
         <div className="space-y-12">
           {servicesPage?.services?.map((service, index) => (

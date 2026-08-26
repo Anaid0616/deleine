@@ -37,7 +37,7 @@ export default function Header() {
 
     return `
     text-inherit
-    underline-offset-4 decoration-2
+    underline-offset-4 decoration-1
     transition-all duration-200
     hover:underline
     ${isActive ? 'underline' : 'no-underline'}

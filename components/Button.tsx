@@ -51,7 +51,7 @@ export default function Button({
     border-2 border-[var(--color-accent)]
     text-[var(--color-accent)]
 
-    px-6 py-2
+    px-6 py-3
     font-semibold
     min-w-[116px] justify-center
 

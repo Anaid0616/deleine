@@ -6,7 +6,7 @@ import { FiMail, FiPhone } from 'react-icons/fi';
 
 const aboutQuery = `*[_type == "aboutPage"][0]{
   title,
-  subtitle,
+  pageIntro,
   sections[]{
     name,
     role,
@@ -34,7 +34,7 @@ type AboutSection = {
 
 type AboutPageData = {
   title: string;
-  subtitle: string;
+  pageIntro: string;
   sections: AboutSection[];
 };
 
@@ -43,12 +43,12 @@ export default async function About() {
 
   return (
     <main className="px-6 py-10 md:py-16">
-      <div className="mx-auto max-w-[1200px] text-center">
+      <div className="max-w-5xl mx-auto text-center">
         <h1 className={`${ebGaramond.className} mb-4 text-4xl md:text-5xl`}>
           {about?.title}
         </h1>
 
-        <p className="mb-10 text-xl font-semibold">{about?.subtitle}</p>
+        <p className="mb-12 text-lg text-neutral-600">{about?.pageIntro}</p>
 
         <div>
           {about?.sections?.map((section, index) => {
