@@ -1,5 +1,6 @@
 'use client';
 
+import MobileMenu from '@/components/layout/MobileMenu';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -79,7 +80,7 @@ export default function Header() {
 
         {/* Desktop navigation */}
         <nav
-          className={`${redHat.className} ml-auto flex items-center gap-10 text-xl font-medium ${
+          className={`${redHat.className} ml-auto hidden lg:flex items-center gap-10 text-xl font-medium ${
             !isHome || scrolled
               ? 'text-[var(--color-text-main)]'
               : 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]'
@@ -98,6 +99,9 @@ export default function Header() {
             Bildgalleri
           </Link>
         </nav>
+
+        {/* Mobile menu */}
+        <MobileMenu isHome={isHome} scrolled={scrolled} />
       </div>
     </header>
   );
