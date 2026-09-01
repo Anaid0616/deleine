@@ -2,6 +2,10 @@ import { sanityClient } from '@/lib/sanity';
 import { ebGaramond } from '@/lib/fonts';
 import Button from '@/components/Button';
 
+/**
+ * Fetches the services page content from Sanity,
+ * including the booking URL from the hero section.
+ */
 const servicesQuery = `*[_type == "servicesPage"][0]{
   title,
   pageIntro,
@@ -26,6 +30,10 @@ type ServicesPageData = {
   services: ServiceItem[];
 };
 
+/**
+ * Services page displaying treatments, descriptions and prices
+ * fetched from Sanity.
+ */
 export default async function ServicesPage() {
   const servicesPage =
     await sanityClient.fetch<ServicesPageData>(servicesQuery);
@@ -43,6 +51,7 @@ export default async function ServicesPage() {
           {servicesPage.pageIntro}
         </p>
 
+        {/* Services */}
         <div className="space-y-12">
           {servicesPage?.services?.map((service, index) => (
             <section key={index} className="border-t border-black/10 pt-10">
@@ -63,6 +72,7 @@ export default async function ServicesPage() {
           ))}
         </div>
 
+        {/* Booking */}
         <div className="mt-16 flex justify-end uppercase">
           <Button href={servicesPage?.bookingUrl} showIcon>
             Boka tid

@@ -3,6 +3,10 @@ import { sanityClient } from '@/lib/sanity';
 import { ebGaramond } from '@/lib/fonts';
 import Button from '@/components/Button';
 
+/**
+ * Fetches homepage content from Sanity,
+ * including hero media and featured services.
+ */
 const homeQuery = `*[_type == "homePage"][0]{
   subtitle,
   ctaText,
@@ -18,6 +22,12 @@ const homeQuery = `*[_type == "homePage"][0]{
   }
 }`;
 
+/**
+ * Homepage with hero, introduction and featured services.
+ *
+ * Content is fetched from Sanity and the hero uses
+ * an image as fallback when no video is available.
+ */
 export default async function Home() {
   const home = await sanityClient.fetch(homeQuery);
 

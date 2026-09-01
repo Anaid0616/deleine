@@ -2,12 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { redHat } from '@/lib/fonts';
 
+/**
+ * Site footer with navigation and contact information.
+ */
 export default function Footer() {
   return (
     <footer className="bg-[var(--color-surface)] text-[var(--color-text-main)] mt-10">
-      <div className="max-w-[1400px] mx-auto px-6 py-8 grid gap-10 md:grid-cols-3">
+      <div className="max-w-[1400px] mx-auto px-6 py-8 grid gap-10 text-center md:grid-cols-3 md:text-left">
         {/* Logo + text */}
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <Image
             src="/footer-logo.png"
             alt="Deleine footer logo"

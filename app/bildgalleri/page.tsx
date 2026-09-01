@@ -39,6 +39,11 @@ type GalleryPageData = {
   gallery?: GalleryItem[];
 };
 
+/**
+ * Gallery page displaying images from Sanity.
+ *
+ * Supports single images, before-and-after images, and pagination.
+ */
 export default async function GalleryPage({
   searchParams,
 }: {

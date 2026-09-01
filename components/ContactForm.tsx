@@ -3,21 +3,33 @@
 import { useState } from 'react';
 import Button from '@/components/Button';
 
+/**
+ * Contact form for sending messages through the contact API.
+ *
+ * Handles form submission, loading state and feedback
+ * based on whether the message was sent successfully.
+ */
 export default function ContactForm() {
   const [status, setStatus] = useState<'success' | 'error' | ''>('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
+  /**
+   * Sends the form data to the contact API
+   * and updates the form status based on the response.
+   */
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
+    // Reset previous feedback and start loading
     setLoading(true);
     setStatus('');
     setMessage('');
 
     const formData = new FormData(form);
 
+    // Collect form data
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -35,6 +47,7 @@ export default function ContactForm() {
 
       const result = await response.json();
 
+      // Display feedback based on the API response
       if (response.ok) {
         setStatus('success');
         setMessage('Meddelandet skickades');
@@ -49,6 +62,7 @@ export default function ContactForm() {
     } finally {
       setLoading(false);
 
+      // Clear feedback after three seconds
       setTimeout(() => {
         setStatus('');
         setMessage('');

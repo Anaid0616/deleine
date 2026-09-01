@@ -3,6 +3,9 @@ import { ebGaramond } from '@/lib/fonts';
 import { FaInstagram, FaFacebookF } from 'react-icons/fa';
 import ContactForm from '@/components/ContactForm';
 
+/**
+ * Fetches contact page content from Sanity.
+ */
 const contactQuery = `*[_type == "contactPage"][0]{
   title,
   pageIntro,
@@ -14,7 +17,10 @@ const contactQuery = `*[_type == "contactPage"][0]{
   facebook
 }`;
 
-/* Render contact page */
+/**
+ * Contact page displaying contact details, social links,
+ * contact form and an optional map.
+ */
 export default async function ContactPage() {
   /* Fetch Sanity data */
   const contact = await sanityClient.fetch(contactQuery);
@@ -66,6 +72,7 @@ export default async function ContactPage() {
                 </a>
               </div>
 
+              {/* Social links */}
               <div className="pt-4 flex items-center gap-4">
                 {contact?.instagram && (
                   <a
@@ -77,7 +84,7 @@ export default async function ContactPage() {
     transition-all duration-200
     transform
     hover:scale-120
-    hover:text-black/70]
+    hover:text-black/70
   "
                     aria-label="Instagram"
                   >
@@ -95,7 +102,7 @@ export default async function ContactPage() {
     transition-all duration-200
     transform
     hover:scale-120
-    hover:text-black/70]
+    hover:text-black/70
   "
                     aria-label="Facebook"
                   >

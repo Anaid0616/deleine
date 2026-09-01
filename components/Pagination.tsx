@@ -4,6 +4,11 @@ type PaginationProps = {
   basePath: string;
 };
 
+/**
+ * Pagination navigation with previous, next and numbered page links.
+ *
+ * Returns nothing when only one page is available.
+ */
 export default function Pagination({
   currentPage,
   totalPages,
@@ -16,6 +21,7 @@ export default function Pagination({
       className="mt-12 flex items-center justify-center gap-3"
       aria-label="Sidnavigering"
     >
+      {/* Previous page */}
       {currentPage > 1 && (
         <a
           href={
@@ -27,6 +33,7 @@ export default function Pagination({
         </a>
       )}
 
+      {/* Page numbers */}
       {Array.from({ length: totalPages }, (_, index) => {
         const page = index + 1;
 
@@ -49,6 +56,7 @@ export default function Pagination({
         );
       })}
 
+      {/* Next page */}
       {currentPage < totalPages && (
         <a
           href={`${basePath}?page=${currentPage + 1}`}

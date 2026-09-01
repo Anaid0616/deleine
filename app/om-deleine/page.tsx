@@ -4,6 +4,9 @@ import { ebGaramond } from '@/lib/fonts';
 import { FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { FiMail, FiPhone } from 'react-icons/fi';
 
+/**
+ * Fetches the about page content and team sections from Sanity.
+ */
 const aboutQuery = `*[_type == "aboutPage"][0]{
   title,
   pageIntro,
@@ -38,6 +41,12 @@ type AboutPageData = {
   sections: AboutSection[];
 };
 
+/**
+ * About page displaying team members and their contact information.
+ *
+ * Content is fetched from Sanity and each section can alternate
+ * the image position between left and right.
+ */
 export default async function About() {
   const about = await sanityClient.fetch<AboutPageData>(aboutQuery);
 
@@ -66,6 +75,7 @@ export default async function About() {
               </div>
             );
 
+            // Text, contact details and social links
             const textBlock = (
               <div className="flex h-full flex-col items-center justify-center border border-neutral-300 bg-white px-6 py-8 text-center shadow-sm md:px-10 md:py-10">
                 <h2
@@ -92,6 +102,7 @@ export default async function About() {
                       </a>
                     )}
 
+                    {/* Contact details */}
                     {section.phone && section.email && (
                       <span className="text-neutral-400">||</span>
                     )}
@@ -108,6 +119,7 @@ export default async function About() {
                   </div>
                 )}
 
+                {/* Social links */}
                 <div className="flex items-center justify-center gap-4">
                   {section.instagramUrl && (
                     <a

@@ -16,8 +16,9 @@ import { redHat } from '@/lib/fonts';
 export default function Header() {
   /** Tracks whether the page has been scrolled past the threshold */
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const pathname = usePathname();
   const isHome = pathname === '/';
 
   useEffect(() => {
@@ -28,6 +29,24 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
 
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+
+    const handleResize = () => {
+      if (mediaQuery.matches) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    handleResize();
+
+    mediaQuery.addEventListener('change', handleResize);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleResize);
+    };
   }, []);
 
   {
@@ -50,7 +69,7 @@ export default function Header() {
       className={`top-0 left-0 w-full z-50 transition-colors duration-300 ${
         isHome
           ? `fixed ${
-              scrolled
+              scrolled || mobileMenuOpen
                 ? 'bg-[var(--color-surface)] text-[var(--color-text-main)]'
                 : 'bg-transparent text-white'
             }`
@@ -59,7 +78,7 @@ export default function Header() {
     >
       <div
         className={`w-full max-w-[1400px] mx-auto px-6 flex items-center justify-between transition-all duration-300 ${
-          isHome ? (scrolled ? 'py-3' : 'py-4') : 'py-3'
+          isHome ? (scrolled ? 'py-3.5' : 'py-4') : 'py-3.5'
         }`}
       >
         {/* Logo */}
@@ -71,8 +90,12 @@ export default function Header() {
             height={153}
             className={`h-auto transition-all duration-300 ${
               !isHome || scrolled
-                ? 'w-[250px]'
-                : 'w-[300px] invert drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]'
+                ? 'w-[210px] sm:w-[250px] md:w-[280px]'
+                : 'w-[210px] sm:w-[250px] md:w-[300px]'
+            } ${
+              !isHome || scrolled || mobileMenuOpen
+                ? ''
+                : 'invert drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]'
             }`}
             priority
           />
@@ -101,7 +124,12 @@ export default function Header() {
         </nav>
 
         {/* Mobile menu */}
-        <MobileMenu isHome={isHome} scrolled={scrolled} />
+        <MobileMenu
+          isHome={isHome}
+          scrolled={scrolled}
+          open={mobileMenuOpen}
+          setOpen={setMobileMenuOpen}
+        />
       </div>
     </header>
   );
