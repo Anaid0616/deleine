@@ -17,13 +17,24 @@ const contactQuery = `*[_type == "contactPage"][0]{
   facebook
 }`;
 
+type ContactPageData = {
+  title?: string;
+  pageIntro?: string;
+  address?: string;
+  email?: string;
+  phone?: string;
+  mapUrl?: string;
+  instagram?: string;
+  facebook?: string;
+};
+
 /**
  * Contact page displaying contact details, social links,
  * contact form and an optional map.
  */
 export default async function ContactPage() {
   /* Fetch Sanity data */
-  const contact = await sanityClient.fetch(contactQuery);
+  const contact = await sanityClient.fetch<ContactPageData>(contactQuery);
 
   return (
     <main className="px-6 py-10 md:py-16">

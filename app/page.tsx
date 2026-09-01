@@ -22,6 +22,23 @@ const homeQuery = `*[_type == "homePage"][0]{
   }
 }`;
 
+type FeaturedService = {
+  title: string;
+  alt?: string;
+  imageUrl?: string;
+};
+
+type HomePageData = {
+  subtitle?: string;
+  ctaText?: string;
+  ctaUrl?: string;
+  heading?: string;
+  body?: string;
+  imageUrl?: string;
+  videoUrl?: string;
+  featuredServices?: FeaturedService[];
+};
+
 /**
  * Homepage with hero, introduction and featured services.
  *
@@ -29,7 +46,7 @@ const homeQuery = `*[_type == "homePage"][0]{
  * an image as fallback when no video is available.
  */
 export default async function Home() {
-  const home = await sanityClient.fetch(homeQuery);
+  const home = await sanityClient.fetch<HomePageData>(homeQuery);
 
   return (
     <main>
@@ -135,8 +152,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* POPULAR SERVICES */}
-      {home?.featuredServices?.length > 0 && (
+      {/* featured services */}
+      {(home?.featuredServices?.length ?? 0) > 0 && (
         <section className="px-4 py-12 md:py-16">
           <div className="max-w-5xl mx-auto">
             <h3
@@ -146,34 +163,25 @@ export default async function Home() {
             </h3>
 
             <div className="grid gap-6 md:grid-cols-3">
-              {home.featuredServices.map(
-                (
-                  service: {
-                    title: string;
-                    alt?: string;
-                    imageUrl?: string;
-                  },
-                  index: number,
-                ) => (
-                  <div key={index} className="text-center">
-                    {service.imageUrl && (
-                      <div className="relative aspect-[4/5] w-full overflow-hidden">
-                        <Image
-                          src={service.imageUrl}
-                          alt={service.alt || service.title}
-                          fill
-                          className="object-cover transition-transform duration-500 hover:scale-105"
-                          sizes="(min-width: 768px) 33vw, 100vw"
-                        />
-                      </div>
-                    )}
+              {home?.featuredServices?.map((service, index) => (
+                <div key={index} className="text-center">
+                  {service.imageUrl && (
+                    <div className="relative aspect-[4/5] w-full overflow-hidden">
+                      <Image
+                        src={service.imageUrl}
+                        alt={service.alt || service.title}
+                        fill
+                        className="object-cover transition-transform duration-500 hover:scale-105"
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                      />
+                    </div>
+                  )}
 
-                    <h4 className={`${ebGaramond.className} mt-4 text-3xl`}>
-                      {service.title}
-                    </h4>
-                  </div>
-                ),
-              )}
+                  <h4 className={`${ebGaramond.className} mt-4 text-3xl`}>
+                    {service.title}
+                  </h4>
+                </div>
+              ))}
             </div>
 
             <div className="mt-10 text-center">
