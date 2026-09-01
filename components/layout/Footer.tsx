@@ -13,10 +13,10 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-start">
           <Image
             src="/footer-logo.png"
-            alt="Deleine footer logo"
-            width={95}
-            height={115}
-            className="w-[90px] h-auto -mt-1 mb-4"
+            alt="Deleine logo"
+            width={90}
+            height={109}
+            className="-mt-1 mb-4"
           />
 
           <p className="max-w-[250px]">
