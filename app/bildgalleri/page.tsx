@@ -95,7 +95,7 @@ export default async function GalleryPage({
         {data?.gallery?.length ? (
           <>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-              {visibleItems.map((item) => (
+              {visibleItems.map((item, index) => (
                 <article key={item._key} className="group">
                   {item.type === 'beforeAfter' ? (
                     <div className="grid aspect-square grid-cols-2">
@@ -132,6 +132,7 @@ export default async function GalleryPage({
                           width={600}
                           height={600}
                           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                          priority={index === 0}
                         />
                       </div>
                     )
