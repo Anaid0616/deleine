@@ -96,7 +96,7 @@ export default function Header() {
             } ${
               !isHome || scrolled || mobileMenuOpen
                 ? ''
-                : 'invert drop-shadow-[0_1px_2px_rgba(0,0,0,0.75)]'
+                : 'invert drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]'
             }`}
             priority
             fetchPriority="high"
