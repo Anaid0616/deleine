@@ -84,19 +84,18 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" aria-label="Gå till startsidan">
           <Image
-            src="/deleine-logo.svg"
+            src={
+              !isHome || scrolled || mobileMenuOpen
+                ? '/deleine-logo.png'
+                : '/deleine-logo-white.png'
+            }
             alt="Deleine logo"
             width={521}
             height={153}
-            unoptimized
-            className={`h-auto transition-all duration-300 ${
+            className={`h-auto transition-[width] duration-300 ${
               !isHome || scrolled
                 ? 'w-[210px] sm:w-[250px] md:w-[280px]'
                 : 'w-[210px] sm:w-[250px] md:w-[300px]'
-            } ${
-              !isHome || scrolled || mobileMenuOpen
-                ? ''
-                : 'invert drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]'
             }`}
             priority
             fetchPriority="high"
