@@ -84,7 +84,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" aria-label="Gå till startsidan">
           <Image
-            src="/deleine-logo.svg"
+            src="/deleine-logo-1.svg"
             alt="Deleine logo"
             width={521}
             height={153}
