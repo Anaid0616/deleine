@@ -51,7 +51,7 @@ export default async function ContactPage() {
         <section className=" border border-neutral-200 bg-white px-8 py-10 md:px-14 md:py-12">
           <div className="grid gap-10 md:grid-cols-2">
             {/* Left contact info */}
-            <div className="space-y-6">
+            <div className="order-2 space-y-6 md:order-1">
               <div>
                 <p className="mb-1 text-sm uppercase tracking-wide text-accent">
                   Adress
@@ -91,11 +91,11 @@ export default async function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-    text-accent
+    text-black/70
     transition-all duration-200
     transform
     hover:scale-120
-    hover:text-black/70
+    hover:text-accent
   "
                     aria-label="Instagram"
                   >
@@ -109,11 +109,11 @@ export default async function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-    text-accent
+    text-black/70
     transition-all duration-200
     transform
     hover:scale-120
-    hover:text-black/70
+    hover:text-accent
   "
                     aria-label="Facebook"
                   >
@@ -124,7 +124,8 @@ export default async function ContactPage() {
             </div>
 
             {/* Right contact form */}
-            <div>
+
+            <div className="order-1 md:order-2">
               <ContactForm />
             </div>
           </div>
