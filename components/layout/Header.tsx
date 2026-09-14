@@ -92,7 +92,7 @@ export default function Header() {
             alt="Deleine logo"
             width={521}
             height={153}
-            className={`h-auto transition-[width] duration-300 ${
+            className={`h-auto transition-all duration-300 ${
               !isHome || scrolled
                 ? 'w-[210px] sm:w-[250px] md:w-[280px]'
                 : 'w-[210px] sm:w-[250px] md:w-[300px]'
