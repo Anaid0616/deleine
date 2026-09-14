@@ -92,6 +92,7 @@ export default function Header() {
             alt="Deleine logo"
             width={521}
             height={153}
+            unoptimized
             className={`h-auto transition-all duration-300 ${
               !isHome || scrolled
                 ? 'w-[210px] sm:w-[250px] md:w-[280px]'
