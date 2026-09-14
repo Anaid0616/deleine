@@ -99,7 +99,6 @@ export default function Header() {
                 : 'w-[210px] sm:w-[250px] md:w-[300px]'
             }`}
             priority
-            fetchPriority="high"
           />
         </Link>
 
