@@ -68,7 +68,7 @@ export default function Header() {
     <header
       className={`top-0 left-0 w-full z-50 transition-colors duration-300 ${
         isHome
-          ? `absolute ${
+          ? `fixed ${
               scrolled || mobileMenuOpen
                 ? 'bg-[var(--color-surface)] text-[var(--color-text-main)]'
                 : 'bg-transparent text-white'
