@@ -87,7 +87,7 @@ export default function Header() {
             src={
               !isHome || scrolled || mobileMenuOpen
                 ? '/deleine-logo.png'
-                : '/deleine-logo-white.png'
+                : '/deleine-logo-whiteb.png'
             }
             alt="Deleine logo"
             width={521}
