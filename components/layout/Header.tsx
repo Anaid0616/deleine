@@ -83,7 +83,7 @@ export default function Header() {
       >
         {/* Logo */}
         <Link href="/" aria-label="Gå till startsidan">
-          <Image
+          <img
             src={
               !isHome || scrolled || mobileMenuOpen
                 ? '/deleine-logo.png'
@@ -92,14 +92,11 @@ export default function Header() {
             alt="Deleine logo"
             width={521}
             height={153}
-            unoptimized
-            className={`h-auto transition-all duration-300 ${
+            className={
               !isHome || scrolled
-                ? 'w-[210px] sm:w-[250px] md:w-[280px]'
-                : 'w-[210px] sm:w-[250px] md:w-[280px]'
-            }`}
-            priority
-            fetchPriority="high"
+                ? 'h-auto w-[210px] sm:w-[250px] md:w-[280px]'
+                : 'h-auto w-[210px] sm:w-[250px] md:w-[300px]'
+            }
           />
         </Link>
 
