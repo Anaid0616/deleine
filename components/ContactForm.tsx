@@ -83,6 +83,8 @@ export default function ContactForm() {
           id="name"
           name="name"
           type="text"
+          required
+          autoComplete="name"
           className="w-full border-b border-black/30 bg-transparent py-2 outline-none transition-all duration-200 hover:border-black/60 focus:border-[var(--color-accent)]"
         />
       </div>
@@ -99,6 +101,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           required
+          autoComplete="email"
           className="w-full border-b border-black/30 bg-transparent py-2 outline-none transition-all duration-200 hover:border-black/60 focus:border-[var(--color-accent)]"
         />
       </div>

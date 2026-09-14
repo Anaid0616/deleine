@@ -16,7 +16,8 @@ export default function Footer() {
             alt="Deleine logo"
             width={90}
             height={109}
-            className="-mt-1 mb-4"
+            sizes="90px"
+            className="-mt-1 mb-4 h-[109px] w-[90px]"
           />
 
           <p className="max-w-[250px]">
