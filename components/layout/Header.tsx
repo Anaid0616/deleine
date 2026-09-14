@@ -95,7 +95,7 @@ export default function Header() {
             className={`h-auto transition-all duration-300 ${
               !isHome || scrolled
                 ? 'w-[210px] sm:w-[250px] md:w-[280px]'
-                : 'w-[210px] sm:w-[250px] md:w-[300px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]'
+                : 'w-[210px] sm:w-[250px] md:w-[300px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]'
             }`}
             priority
             fetchPriority="high"
